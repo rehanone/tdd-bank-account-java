@@ -43,4 +43,15 @@ public class AccountTest {
         account.withdraw(55);
         assertThat(account.balance()).isEqualTo(25);
     }
+
+    @Test
+    public void canTransferMoneyOutToAnotherAccount() {
+        Account accountA = new Account();
+        Account accountB = new Account();
+        accountA.deposit(100);
+        accountA.transferOut(20, accountB);
+        assertThat(accountA.balance()).isEqualTo(80);
+        assertThat(accountB.balance()).isEqualTo(20);
+    }
+
 }

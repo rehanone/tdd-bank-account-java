@@ -12,6 +12,12 @@ public class Account {
     }
 
     public int withdraw(int amount) {
-        return currentBalance -= amount;
+        currentBalance -= amount;
+        return amount;
+    }
+
+    public void transferOut(int amount, Account otherAccount) {
+        int otherAmount = this.withdraw(amount);
+        otherAccount.deposit(otherAmount);
     }
 }
